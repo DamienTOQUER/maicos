@@ -485,6 +485,75 @@ class Test_AnalysisBase:
             [rec.message for rec in caplog.records]
         )
 
+    @pytest.mark.parametrize(
+        "typefunc",
+        [
+            int,
+            float,
+            np.float32,
+            np.float64,
+            np.int32,
+            np.int64,
+        ],
+    )
+    def test_bin_width(self, ag, typefunc):
+        """Test if various types for bin_wdith are supported."""
+        ana_obj = AnalysisBase(
+            atomgroup=ag,
+            unwrap=False,
+            pack=True,
+            refgroup=None,
+            jitter=0.0,
+            wrap_compound="atoms",
+            concfreq=0,
+        )
+
+        ana_obj._bin_width = typefunc(1.0)
+
+        ana_obj._prepare = lambda: None
+        ana_obj._single_frame = lambda: None
+        ana_obj._conclude = lambda: None
+
+        ana_obj.run(stop=1)
+        assert ana_obj._bin_width == typefunc(1.0)
+
+    def test_bin_width_not_a_number(self, ag):
+        """Test error raise that bin_width is not a number."""
+        ana_obj = AnalysisBase(
+            atomgroup=ag,
+            unwrap=False,
+            pack=True,
+            refgroup=None,
+            jitter=0.0,
+            wrap_compound="atoms",
+            concfreq=0,
+        )
+
+        ana_obj._bin_width = "x"
+
+        match = "Binwidth must be a real number but is of type 'str'."
+        with pytest.raises(TypeError, match=match):
+            ana_obj.run()
+
+    @pytest.mark.parametrize("bin_width", [0, -0.5])
+    def test_negative_bin_width(self, ag, bin_width):
+        """Test error raise for negative bin_width."""
+        ana_obj = AnalysisBase(
+            atomgroup=ag,
+            unwrap=False,
+            pack=True,
+            refgroup=None,
+            jitter=0.0,
+            wrap_compound="atoms",
+            concfreq=0,
+        )
+
+        ana_obj._bin_width = bin_width
+
+        match = rf"Binwidth must be a positive number but is {bin_width}."
+        with pytest.raises(ValueError, match=match):
+            ana_obj.run()
+
     def test_n_bins(self, ag, caplog):
         """Test `n_bins` logger info."""
         ana_obj = AnalysisBase(
