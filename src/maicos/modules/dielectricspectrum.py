@@ -40,9 +40,7 @@ class DielectricSpectrum(AnalysisBase):
     Parameters
     ----------
     ${ATOMGROUP_PARAMETER}
-    ${BASE_CLASS_PARAMETERS}
     ${TEMPERATURE_PARAMETER}
-    ${OUTPUT_PREFIX_PARAMETER}
     segs : int
         Sets the number of segments the trajectory is broken into.
     df : float
@@ -58,14 +56,13 @@ class DielectricSpectrum(AnalysisBase):
     nobin : bool
         Prevents the data from being binned altogether. This can result in very large
         plot files and errors.
+    ${BASE_CLASS_PARAMETERS}
+    ${OUTPUT_PREFIX_PARAMETER}
 
     Attributes
     ----------
     results
 
-    References
-    ----------
-    .. footbibliography::
 
     """
 
@@ -75,18 +72,18 @@ class DielectricSpectrum(AnalysisBase):
     def __init__(
         self,
         atomgroup: mda.AtomGroup,
-        refgroup: mda.AtomGroup | None = None,
-        unwrap: bool = True,
-        pack: bool = True,
-        concfreq: int = 0,
         temperature: float = 300,
-        output_prefix: str = "",
         segs: int = 20,
         df: float | None = None,
         bins: int = 200,
         binafter: float = 20,
         nobin: bool = False,
+        refgroup: mda.AtomGroup | None = None,
+        unwrap: bool = True,
+        pack: bool = True,
         jitter: float = 0.0,
+        concfreq: int = 0,
+        output_prefix: str = "",
     ) -> None:
         self._locals = locals()
         wrap_compound = get_compound(atomgroup)
@@ -248,7 +245,7 @@ class DielectricSpectrum(AnalysisBase):
 
     @render_docs
     def save(self) -> None:
-        """${SAVE_METHOD_DESCRIPTION}"""  # noqa: D415
+        """${SAVE_METHOD_PREFIX_DESCRIPTION}"""  # noqa: D415
         np.save(self.output_prefix + "tseries.npy", self.results.t)
 
         with Path(self.output_prefix + "V.txt").open(mode="w") as Vfile:

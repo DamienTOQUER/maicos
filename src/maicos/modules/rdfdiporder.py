@@ -43,13 +43,13 @@ class RDFDiporder(AnalysisBase):
     Parameters
     ----------
     ${PDF_PARAMETERS}
-    ${BIN_WIDTH_PARAMETER}
-    ${RADIAL_CLASS_PARAMETERS}
-    ${BIN_METHOD_PARAMETER}
     norm : str, {'rdf', 'density', 'none'}
-        For 'rdf' calculate :math:`g_{ab}(r)`. For 'density' the single group density
-        :math:`n_{ab}(r)` is computed. 'none' computes the number of particles
-        occurences in each spherical shell.
+            For 'rdf' calculate :math:`g_{ab}(r)`. For 'density' the single group
+            density :math:`n_{ab}(r)` is computed. 'none' computes the number of
+            particles occurences in each spherical shell.
+    ${RADIAL_CLASS_PARAMETERS}
+    ${BIN_WIDTH_PARAMETER}
+    ${BIN_METHOD_PARAMETER}
     ${GROUPING_PARAMETER}
     ${BASE_CLASS_PARAMETERS}
     ${OUTPUT_PARAMETER}
@@ -62,25 +62,21 @@ class RDFDiporder(AnalysisBase):
         RDF either in :math:`\text{eÅ}^{-2}` if norm is ``"rdf"`` or ``"density"`` or
         :math:`\text{eÅ}` if norm is ``"none"``.
 
-    References
-    ----------
-    .. footbibliography::
-
     """
 
     def __init__(
         self,
         g1: mda.AtomGroup,
         g2: mda.AtomGroup | None = None,
-        bin_width: float = 0.1,
+        norm: str = "rdf",
         rmin: float = 0.0,
         rmax: float = 15.0,
+        bin_width: float = 0.1,
         bin_method: str = "com",
-        norm: str = "rdf",
         grouping: str = "residues",
+        refgroup: mda.AtomGroup | None = None,
         unwrap: bool = True,
         pack: bool = True,
-        refgroup: mda.AtomGroup | None = None,
         jitter: float = 0.0,
         concfreq: int = 0,
         output: str = "diporderrdf.dat",

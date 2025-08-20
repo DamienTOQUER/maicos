@@ -31,10 +31,10 @@ class KineticEnergy(AnalysisBase):
     Parameters
     ----------
     ${ATOMGROUP_PARAMETER}
-    ${BASE_CLASS_PARAMETERS}
     refpoint : str
         reference point for molecular center: center of mass (``"com"``) or center of
         charge (``"coc"``).
+    ${BASE_CLASS_PARAMETERS}
     ${OUTPUT_PARAMETER}
 
     Attributes
@@ -46,22 +46,18 @@ class KineticEnergy(AnalysisBase):
     results.rot : numpy.ndarray
         rotational kinetic energy (kJ/mol).
 
-    References
-    ----------
-    .. footbibliography::
-
     """
 
     def __init__(
         self,
         atomgroup: mda.AtomGroup,
+        refpoint: str = "com",
+        refgroup: mda.AtomGroup | None = None,
         unwrap: bool = False,
         pack: bool = True,
-        refgroup: mda.AtomGroup | None = None,
         jitter: float = 0.0,
         concfreq: int = 0,
         output: str = "ke.dat",
-        refpoint: str = "com",
     ) -> None:
         self._locals = locals()
 

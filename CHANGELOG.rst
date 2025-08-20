@@ -11,12 +11,13 @@ Changelog
 
 Unreleased
 ----------
-Philip Loche
+Philip Loche, Kira Fischer
 
 - Simplify bin width validation (#522)
 - Small cleanup of build workflow (#521)
 - Minor streamlining of CI workflows (#515)
 - Update Python wheels building (#514)
+- Sort parameters in docs (#519)
 
 v0.11.2 (2025/07/15)
 --------------------

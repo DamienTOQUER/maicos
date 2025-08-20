@@ -535,7 +535,7 @@ class AnalysisBase(_Runner, MDAnalysis.analysis.base.AnalysisBase):
         verbose: bool | None = None,
         progressbar_kwargs: dict | None = None,
     ) -> Self:
-        """Iterate over the trajectory."""
+        """${RUN_METHOD_DESCRIPTION}"""  # noqa: D415
         return _Runner._run(
             self,
             analysis_instances=(self,),

@@ -28,9 +28,9 @@ class DipoleAngle(AnalysisBase):
     Parameters
     ----------
     ${ATOMGROUP_PARAMETER}
-    ${BASE_CLASS_PARAMETERS}
-    ${GROUPING_PARAMETER}
     ${PDIM_PLANAR_PARAMETER}
+    ${GROUPING_PARAMETER}
+    ${BASE_CLASS_PARAMETERS}
     ${OUTPUT_PARAMETER}
 
     Attributes
@@ -44,23 +44,19 @@ class DipoleAngle(AnalysisBase):
     results.cos_theta_ij : numpy.ndarray
         Product :math:`\cos` of dipole i and cos of dipole j (``i != j``).
 
-    References
-    ----------
-    .. footbibliography::
-
     """
 
     def __init__(
         self,
         atomgroup: mda.AtomGroup,
+        pdim: int = 2,
+        grouping: str = "residues",
+        refgroup: mda.AtomGroup | None = None,
         unwrap: bool = False,
         pack: bool = True,
-        refgroup: mda.AtomGroup | None = None,
-        concfreq: int = 0,
-        grouping: str = "residues",
-        pdim: int = 2,
-        output: str = "dipangle.dat",
         jitter: float = 0.0,
+        concfreq: int = 0,
+        output: str = "dipangle.dat",
     ) -> None:
         self._locals = locals()
         self.wrap_compound = get_compound(atomgroup)

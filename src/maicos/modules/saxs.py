@@ -61,7 +61,6 @@ class Saxs(AnalysisBase):
     Parameters
     ----------
     ${ATOMGROUP_PARAMETER}
-    ${BASE_CLASS_PARAMETERS}
     bin_spectrum : bool
         Bin the spectrum. If :py:obj:`False` Miller indices of q-vector are returned.
         Only works for NVT simulations.
@@ -70,6 +69,7 @@ class Saxs(AnalysisBase):
         Minimal angle (°) between the q vectors and the z-axis.
     thetamax : float
         Maximal angle (°) between the q vectors and the z-axis.
+    ${BASE_CLASS_PARAMETERS}
     ${OUTPUT_PARAMETER}
 
     Attributes
@@ -90,26 +90,22 @@ class Saxs(AnalysisBase):
         standard error of the scattering intensities :math:`I(q)`
         (only available if ``bin_spectrum==True``).
 
-    References
-    ----------
-    .. footbibliography::
-
     """
 
     def __init__(
         self,
         atomgroup: mda.AtomGroup,
-        unwrap: bool = False,
-        pack: bool = True,
-        refgroup: mda.AtomGroup | None = None,
-        jitter: float = 0.0,
-        concfreq: int = 0,
         bin_spectrum: bool = True,
         qmin: float = 0,
         qmax: float = 6,
         dq: float = 0.1,
         thetamin: float = 0,
         thetamax: float = 180,
+        refgroup: mda.AtomGroup | None = None,
+        unwrap: bool = False,
+        pack: bool = True,
+        jitter: float = 0.0,
+        concfreq: int = 0,
         output: str = "sq.dat",
     ) -> None:
         self._locals = locals()
