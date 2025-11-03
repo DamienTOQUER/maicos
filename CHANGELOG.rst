@@ -11,8 +11,9 @@ Changelog
 
 Unreleased
 ----------
-Philip Loche, Kira Fischer, Francis Jose
+Philip Loche, Kira Fischer, Francis Jose, Philipp Staerk
 
+- Add additional examples for dielectric profile analysis (#518)
 - Changelog check ignores .github folder (#537)
 - Warn if box is not orthorhombic (#523)
 - Update CI action dependencies (#526)
