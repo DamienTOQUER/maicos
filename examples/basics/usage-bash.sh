@@ -1,5 +1,5 @@
-# Usage - command line
-# ====================
+# Basic usage - Command line
+# ==========================
 #
 # MAICoS can be used directly from the command line (cli). Using cli instead of a Jupyter
 # notebook can sometimes be more comfortable, particularly for lengthy analysis. The cli
