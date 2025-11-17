@@ -83,11 +83,6 @@ skip_covered = true
 show_missing = true
 exclude_lines = ["if __name__ == .__main__.:"]
 
-[tool.mypy]
-exclude = ["docs/src/examples"]
-follow_imports = 'skip'
-ignore_missing_imports = true
-
 [[tool.mypy.overrides]]
 # temporary workaround until we have proper types for `means` and `sems` attributes
 module = "maicos.modules.*"
