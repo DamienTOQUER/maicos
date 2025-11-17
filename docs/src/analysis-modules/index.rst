@@ -5,7 +5,7 @@ Analysis modules
 
 This is a list of all analysis modules provided by MAICoS. Note that we do not have an
 example section for each module. Instead, we refer to our :ref:`tutorial
-<sphx_glr_examples_basics_usage-python.py>` and :ref:`userdoc-how-to`. Once you
+<sphx_glr_examples_basics_usage-python-basic.py>` and :ref:`userdoc-how-to`. Once you
 understand the basic structure taught there, you can work with all modules. If not, feel
 free to raise an issue in GitHub_ or ask us on Discord_.
 

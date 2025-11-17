@@ -10,7 +10,7 @@ This sections describes MAICoS, how to install it, and its most basic commands.
 
     maicos
     installation
-    basics/index
+    basics
     ../examples/basics/usage-python-advanced
     units
     changelog

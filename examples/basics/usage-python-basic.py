@@ -35,9 +35,6 @@ To start, let us first import Matplotlib, MDAnalysis and MAICoS
 """  # noqa: D415
 # %%
 
-import logging
-import sys
-
 import matplotlib.pyplot as plt
 import MDAnalysis as mda
 
@@ -87,15 +84,11 @@ print(f"Total simulation time is {total_time} ps.")
 # 4. the Na and Cl atoms (of the wall):
 
 group_H2O = u.select_atoms("type OW HW")
-group_O = u.select_atoms("type OW")
-group_H = u.select_atoms("type HW")
-group_NaCl = u.select_atoms("type SOD CLA")
 
 # %%
 # Let us print a few information about the groups
 
-print(f"Number of water molecules is {group_O.n_atoms}.")
-print(f"Number of NaCl atoms is {group_NaCl.n_atoms}.")
+print(f"Number of water molecules is {group_H2O.n_atoms // 3}.")
 
 # %%
 # Density Profiles
@@ -109,8 +102,8 @@ dplan = maicos.DensityPlanar(group_H2O).run()
 # %%
 # The warning starting with *Unwrapping* is perfectly normal and can be ignored for now.
 #
-# Let us extract the bin coordinates :math:`z`, the averaged density profile and its uncertainty estimated by MAICoS from the
-# ``results`` attribute:
+# Let us extract the bin coordinates :math:`z`, the averaged density profile and its
+# uncertainty estimated by MAICoS from the ``results`` attribute:
 
 zcoor = dplan.results.bin_pos
 dens = dplan.results.profile
@@ -135,4 +128,5 @@ ax.set_xlabel(r"z coordinate ($\rm Å$)")
 ax.set_ylabel(r"density H2O ($\rm u \cdot Å^{-3}$)")
 
 fig.show()
-# For this example we scale the error by 5 to be visible in the plot. More detail on the uncertainty estimation can be found in the advanced usages section.
+# For this example we scale the error by 5 to be visible in the plot. More detail on the
+# uncertainty estimation can be found in the advanced usages section.

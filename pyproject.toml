@@ -83,7 +83,7 @@ maicos = "maicos.__main__:main"
 ignore = ["src/maicos/lib/_cmath.c"]
 
 [tool.mypy]
-exclude = ["docs/src/examples"]
+exclude = ["docs/src/examples", "docs/src/get-started"]
 follow_imports = 'skip'
 ignore_missing_imports = true
 

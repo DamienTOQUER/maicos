@@ -11,8 +11,9 @@ Changelog
 
 Unreleased
 ----------
-Philip Loche, Kira Fischer, Francis Jose, Philipp Staerk, Henrik Stooß
+Philip Loche, Kira Fischer, Francis Jose, Philipp Staerk, Henrik Stooß, Damien Toquer
 
+- Splitting basic and advanced usage in Getting Started (#535)
 - Implement error calculation for observables with multiple samples (#494)
 - Bump minimal Python version to 3.11 and MDAnalysis to 2.10.0 (#529)
 - Added support for Python 3.14 in CI workflows (#529)

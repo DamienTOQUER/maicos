@@ -9,9 +9,10 @@
 Advanced - Python interpreter
 =============================
 
-The requirements to follow the tutorial are the same than for the basic example. 
+The requirements to follow the tutorial are the same than for the basic example.
 
-To start, let us first import Matplotlib, MDAnalysis and MAICoS, load the trajectory and create our groups.
+To start, let us first import Matplotlib, MDAnalysis and MAICoS, load the trajectory
+and create our groups.
 """  # noqa: D415
 # %%
 
@@ -32,7 +33,7 @@ group_NaCl = u.select_atoms("type SOD CLA")
 
 # %%
 # Uncertainity estimates
-# ======================
+# ----------------------
 #
 # Let us use the :class:`maicos.DensityPlanar` class to extract the density profile of
 # the ``group_H2O`` along the (default) :math:`z` axis by running the analysis:
@@ -115,16 +116,14 @@ fig.show()
 # AnalysisCollection example
 # --------------------------
 #
-# When multiple analysis are done on the same trajectory, using AnalysisCollection 
-# can lead to a speedup compared to running the individual analyses, since the 
-# trajectory loop is performed only once. Let us imagine that we want to compute 
+# When multiple analysis are done on the same trajectory, using AnalysisCollection
+# can lead to a speedup compared to running the individual analyses, since the
+# trajectory loop is performed only once. Let us imagine that we want to compute
 # the density of both the oxygen and hydrogen group:
 
 dplan_array = []
 for ag in [group_O, group_H]:
-    dplan_array.append(
-        maicos.DensityPlanar(ag, unwrap=False)
-    )
+    dplan_array.append(maicos.DensityPlanar(ag, unwrap=False))
 
 # %%
 # Now instead of running them in a loop, we will create an AnalysisCollection object:
