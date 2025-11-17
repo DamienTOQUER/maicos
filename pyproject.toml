@@ -67,13 +67,12 @@ maicos = "maicos.__main__:main"
 
 [tool.check-manifest]
 # ignore files missing in VCS
-ignore = ["src/maicos/lib/_cmath.c"]
+ignore = ["src/maicos/lib/_cmath.c", "src/maicos/_version.py"]
 
 [tool.mypy]
 exclude = ["docs/src/examples", "docs/src/get-started"]
 follow_imports = 'skip'
 ignore_missing_imports = true
-ignore = ["src/maicos/_version.py"]
 
 [tool.coverage.paths]
 source = ["src/maicos", "*/site-packages"]
