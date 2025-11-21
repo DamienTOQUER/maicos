@@ -19,23 +19,19 @@ maicos densityplanar
 # %%
 # We can specify the topology and trajectory using the '-s' and '-f' flags.
 
--s slit_flow.tpr -f slit_flow.trr
+maicos densityplanar -s slit_flow.tpr\
+                     -f slit_flow.trr
 # .. end_basic_traj_sh
 # .. start_basic_group_sh
 # %%
-# By using the '-atomgroup' flag.
+# Using the '-atomgroup' flag.
 
--atomgroup 'type OW HW'
+maicos densityplanar -s slit_flow.tpr\
+                     -f slit_flow.trr\
+                     -atomgroup 'type OW HW'
 
 # .. end_basic_group_sh
 # .. start_basic_run_sh
-# %%
-
-maicos densityplanar -s slit_flow.tpr \
-                     -f slit_flow.trr \
-                     -atomgroup 'type OW HW' \
-                     -concfreq '10'
-
 # %%
 #
 # The density profile has been written in a file named ``density.dat`` in the current
@@ -52,6 +48,16 @@ maicos densityplanar -s slit_flow.tpr \
                      -atomgroup 'type OW HW' \
                      -concfreq '10'
 # .. end_basic_run_sh
+# .. start_basic_plot_sh
+# %%
+# Using gnuplot:
+
+echo " \
+    set xlabel 'z coordinate, (Å)'; \
+    set ylabel 'density H2O (u.Å⁻³)'; \
+    plot 'density.dat' using (column(1)):(column(2)):(5*column(3)) with yerrorlines title '' \
+" | gnuplot -persist || true
+# .. end_basic_plot_sh
 # .. start_basic_help_sh
 # %%
 #

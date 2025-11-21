@@ -115,14 +115,11 @@ print(dens[:10])
 # By default the ``bin_width`` is 1 Å, and the unit is atomic mass per :math:`Å^3`
 # (:math:`\text{u}/\text{Å}^3`).
 # .. end_basic_run_py
-# .. start_basic_plot
-# Let us plot the density profile using Matplotlib:
+# .. start_basic_plot_py
+# Using Matplotlib:
 
 fig, ax = plt.subplots()
 
-# For bash user, you can use numpy to load the density.dat
-# import numpy as np
-# zcoor,dens,uncertainty = np.loadtxt("density.dat").swapaxes(0,1)
 ax.errorbar(zcoor, dens, 5 * uncertainity)
 
 ax.set_xlabel(r"z coordinate ($\rm Å$)")
@@ -134,7 +131,7 @@ fig.show()
 # uncertainty estimation can be found in the advanced usages section.
 
 # %%
-# .. end_basic_plot
+# .. end_basic_plot_py
 # .. start_basic_help_py
 #
 # The general help of MAICoS can be accessed using

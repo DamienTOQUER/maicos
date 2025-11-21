@@ -93,9 +93,25 @@ the ``group_H2O`` along the (default) :math:`z` axis by running the analysis.
       :start-after: # .. start_basic_run_sh
       :end-before: # .. end_basic_run_sh
 
-.. include:: res-tabs/splitted-usage-python-basic.rst
-  :start-after: .. start_basic_plot
-  :end-before: .. end_basic_plot
+We can now plot the density profile.
+
+.. tabs::
+
+  .. group-tab:: Python
+
+    .. include:: res-tabs/splitted-usage-python-basic.rst
+      :start-after: .. start_basic_plot_py
+      :end-before: .. end_basic_plot_py
+
+  .. group-tab:: Bash
+
+    .. include:: res-tabs/splitted-usage-bash.rst
+      :start-after: # .. start_basic_plot_sh
+      :end-before: # .. end_basic_plot_sh
+    .. image:: ../../static/density_gnuplot.png
+      :alt: Density from gnuplot
+
+    For this example we scale the error by 5 to be visible in the plot.
 
 Help function
 -------------

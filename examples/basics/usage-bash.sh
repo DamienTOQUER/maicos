@@ -32,6 +32,16 @@ maicos densityplanar -s slit_flow.tpr \
 
 # %%
 #
+# If installed, the result can be plotted using gnuplot:
+
+echo " \
+    set xlabel 'z coordinate, (Å)'; \
+    set ylabel 'density H2O (u.Å⁻³)'; \
+    plot 'density.dat' using (column(1)):(column(2)):(5*column(3)) with yerrorlines title '' \
+" | gnuplot -persist || true
+
+# %%
+#
 # The general help of MAICoS can be accessed using
 
 maicos -h
